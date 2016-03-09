@@ -252,6 +252,7 @@ public class RegionBroker extends EmptyBroker {
                 if (context.isAllowLinkStealing()) {
                     clientIdSet.put(clientId, context);
                 } else {
+                	// This happens when the ConnectionFactory class is loaded redundantly.
                     throw new InvalidClientIDException("Broker: " + getBrokerName() + " - Client: " + clientId + " already connected from "
                         + oldContext.getConnection().getRemoteAddress());
                 }
